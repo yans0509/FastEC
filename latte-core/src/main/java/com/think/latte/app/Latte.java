@@ -2,7 +2,7 @@ package com.think.latte.app;
 
 import android.content.Context;
 
-import java.util.WeakHashMap;
+import java.util.HashMap;
 
 /**
  * Created by yanqi on 2018/6/24 0024.
@@ -13,7 +13,10 @@ public final class Latte {
         return Configurator.getInstance();
 
     }
-    private static WeakHashMap<String,Object> getConfigurations(){
+    private static HashMap<String,Object> getConfigurations(){
         return Configurator.getInstance().getLatteConfigs();
+    }
+    public static Context getApplication(){
+        return (Context)getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
     }
 }

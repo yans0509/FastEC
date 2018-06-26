@@ -5,13 +5,13 @@ import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import java.util.ArrayList;
-import java.util.WeakHashMap;
+import java.util.HashMap;
 
 /**
  * Created by yanqi on 2018/6/24 0024.
  */
 public class Configurator {
-    private static final WeakHashMap<String, Object> LATTE_CONFIGS = new WeakHashMap<>();
+    private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private Configurator(){
@@ -21,7 +21,7 @@ public class Configurator {
     public static Configurator getInstance(){
         return Holder.INSTANCE;
     }
-    final WeakHashMap<String, Object> getLatteConfigs(){
+    final HashMap<String, Object> getLatteConfigs(){
         return LATTE_CONFIGS;
     }
     private static class Holder{
