@@ -1,4 +1,4 @@
-package com.think.fastec;
+package com.think.fastec.example;
 
 import android.app.Application;
 
