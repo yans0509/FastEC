@@ -1,10 +1,14 @@
 package com.think.latte.net;
 
+import android.content.Context;
+
 import com.think.latte.net.callback.IError;
 import com.think.latte.net.callback.IFailure;
 import com.think.latte.net.callback.IRequest;
 import com.think.latte.net.callback.ISuccess;
 import com.think.latte.net.callback.RequestCallbacks;
+import com.think.latte.ui.LatteLoader;
+import com.think.latte.ui.LoaderStyle;
 
 import java.util.Map;
 
@@ -26,6 +30,8 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private LoaderStyle LOADER_STYLE;
+    private Context CONTEXT;
 
     public RestClient(String url,
                       Map<String, Object> params,
@@ -33,7 +39,9 @@ public class RestClient {
                       ISuccess success,
                       IFailure failure,
                       IError error,
-                      RequestBody body) {
+                      RequestBody body,
+                      Context context,
+                      LoaderStyle loaderStyle) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -41,6 +49,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.CONTEXT = context;
+        this.LOADER_STYLE = loaderStyle;
     }
 
     public static RestClientBuilder builder() {
@@ -52,6 +62,9 @@ public class RestClient {
         Call<String> call = null;
         if (REQUEST != null) {
             REQUEST.onRequestStart();
+        }
+        if (LOADER_STYLE != null) {
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
         switch (method) {
             case GET:
@@ -83,7 +96,8 @@ public class RestClient {
                 REQUEST,
                 SUCCESS,
                 FAILURE,
-                ERROR
+                ERROR,
+                LOADER_STYLE
         );
     }
 
