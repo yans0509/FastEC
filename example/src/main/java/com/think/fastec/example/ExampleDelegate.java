@@ -2,7 +2,9 @@ package com.think.fastec.example;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.think.fastec.R;
 import com.think.latte.delegates.LatteDelegate;
@@ -28,12 +30,13 @@ public class ExampleDelegate extends LatteDelegate {
 
     private void testRestClient() {
         RestClient.builder()
-                .url("https://news.baidu.com")
+                .url("http://127.0.0.1/index")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-//                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                        Log.d("yans", response);
+                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
 
                     }
                 })

@@ -43,6 +43,10 @@ public class Configurator {
         LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
         return this;
     }
+    public final Configurator withLoaderDelayed(long delayed) {
+        LATTE_CONFIGS.put(ConfigKeys.LOADER_DELAYED, delayed);
+        return this;
+    }
 
     private void initIcons() {
         if (ICONS.size() > 0) {
@@ -71,7 +75,7 @@ public class Configurator {
     }
 
     private void checkConfiguration() {
-        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY.name());
+        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {
             throw new RuntimeException("Configuration is not ready, call configure");
         }
