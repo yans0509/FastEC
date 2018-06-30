@@ -51,7 +51,7 @@ public interface RestService {
     Call<String> delete(@Url String url, @QueryMap Map<String, Object> params);
 
     //download 请求
-    @Streaming
+    @Streaming//一边下载一边写入 需要异步方法
     @GET
     Call<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> params);
 

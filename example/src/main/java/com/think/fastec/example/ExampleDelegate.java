@@ -49,7 +49,10 @@ public class ExampleDelegate extends LatteDelegate {
 
                     }
                 })
+                .dir("")
+                .extension("")
+                .name("")
                 .build()
-                .get();
+                .download();
     }
 }
